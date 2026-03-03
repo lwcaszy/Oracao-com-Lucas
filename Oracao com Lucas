@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Missionário David Miranda - Fundador da Igreja Pentecostal Deus é Amor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23gold"/><circle cx="50" cy="50" r="30" fill="%23white"/><text x="50" y="65" font-size="40" text-anchor="middle" fill="%23gold">✝️</text></svg>');
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        header p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        nav {
+            background-color: #333;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: gold;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .section-title {
+            color: #764ba2;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-align: center;
+            border-bottom: 3px solid gold;
+            padding-bottom: 10px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .photo-placeholder {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            height: 300px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2em;
+            border: 3px solid gold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .photo-caption {
+            text-align: center;
+            margin-top: 10px;
+            font-style: italic;
+            color: #666;
+        }
+
+        .timeline-item {
+            background: #f9f9f9;
+            border-left: 4px solid gold;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .timeline-date {
+            font-weight: bold;
+            color: #764ba2;
+            font-size: 1.2em;
+        }
+
+        .supernatural-card {
+            background: linear-gradient(135deg, #667eea22, #764ba222);
+            border: 2px solid gold;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .supernatural-card h3 {
+            color: #764ba2;
+            margin-bottom: 15px;
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 1.2em;
+            color: #555;
+            border-left: 4px solid gold;
+            padding-left: 20px;
+            margin: 30px 0;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 40px;
+            margin-top: 60px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: gold;
+            color: #333;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: #764ba2;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Missionário David Miranda</h1>
+        <p>1936 - 2015 | Fundador da Igreja Pentecostal Deus é Amor</p>
+        <p style="margin-top: 20px;">"Uma vida dedicada à obra de Deus e à expansão do evangelho"</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#historia">História</a></li>
+            <li><a href="#linha-tempo">Linha do Tempo</a></li>
+            <li><a href="#fundacao">Fundação da IPDA</a></li>
+            <li><a href="#sobrenatural">Acontecimentos Sobrenaturais</a></li>
+            <li><a href="#legado">Legado</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="historia" class="section">
+            <h2 class="section-title">História de Vida</h2>
+            <div class="grid-2">
+                <div>
+                    <div class="photo-placeholder">
+                        <span> /imgsrc=<davidjovem class="png"></davidjovem></span>
+                    </div>
+                    <p class="photo-caption">Missionário David Miranda em seus primeiros anos de ministério</p>
+                </div>
+                <div>
+                    <h3 style="color: #764ba2; margin-bottom: 15px;">Os Primeiros Anos</h3>
+                    <p>David Miranda nasceu em 9 de março de 1936, em Porto União, Santa Catarina. Desde jovem, mostrou uma fé inabalável e um chamado especial para a obra missionária. Criado em uma família humilde, aprendeu desde cedo o valor do trabalho e da dedicação a Deus.</p>
+                    <p style="margin-top: 15px;">Sua conversão aconteceu aos 17 anos, quando experimentou um encontro transformador com Cristo que mudaria completamente sua trajetória. Foi nesse momento que sentiu o chamado para dedicar sua vida à pregação do evangelho.</p>
+                    <div class="quote">
+                        "Deus me chamou desde o ventre de minha mãe para ser um instrumento em suas mãos"
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="linha-tempo" class="section">
+            <h2 class="section-title">Linha do Tempo</h2>
+            
+            <div class="timeline-item">
+                <div class="timeline-date">9 de Março de 1936</div>
+                <p><strong>Nascimento</strong> - Nasce em Porto União, Santa Catarina, filho de uma família simples e trabalhadora.</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">1953</div>
+                <p><strong>Conversão</strong> - Aos 17 anos, experimenta sua conversão ao evangelho e sente o chamado ministerial.</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">3 de Maio de 1962</div>
+                <p><strong>Fundação da IPDA</strong> - Funda a Igreja Pentecostal Deus é Amor no bairro Vila Anastácio, em São Paulo, com apenas 11 membros.</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">1960-1980</div>
+                <p><strong>Expansão Nacional</strong> - Período de grande crescimento, com a abertura de igrejas em diversos estados brasileiros.</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">1980-2000</div>
+                <p><strong>Expansão Internacional</strong> - A igreja se expande para outros países, começando pelo Paraguai e Argentina.</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">21 de Fevereiro de 2015</div>
+                <p><strong>Falecimento</strong> - Aos 78 anos, deixa um legado de fé que alcança mais de 150 países.</p>
+            </div>
+        </section>
+
+        <section id="fundacao" class="section">
+            <h2 class="section-title">Fundação da Igreja Pentecostal Deus é Amor</h2>
+            <div class="grid-2">
+                <div>
+                    <h3 style="color: #764ba2;">O Início de um Sonho</h3>
+                    <p>No dia 3 de maio de 1962, na Rua Barão da Pedra Negra, 73, no bairro Vila Anastácio, em São Paulo, o Missionário David Miranda fundou a Igreja Pentecostal Deus é Amor. Com apenas 11 membros, começou um movimento que se tornaria uma das maiores denominações pentecostais do mundo.</p>
+                    <p style="margin-top: 15px;">O primeiro templo era um pequeno galpão alugado, onde as reuniões aconteciam em meio a muitas dificuldades e perseguições. Mas a fé inabalável do Missionário David Miranda mantinha a chama acesa.</p>
+                </div>
+                <div>
+                    <div class="photo-placeholder">
+                        <span>📸 Primeiro Templo da IPDA</span>
+                    </div>
+                    <p class="photo-caption">Primeiro templo na Vila Anastácio - 1962</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobrenatural" class="section">
+            <h2 class="section-title">Acontecimentos Sobrenaturais</h2>
+            <p style="text-align: center; margin-bottom: 30px;">Relatos extraídos da autobiografia do Missionário David Miranda</p>
+            
+            <div class="grid-3">
+                <div class="supernatural-card">
+                    <h3>🔥 Visão dos Anjos</h3>
+                    <p>"Em 1958, durante um período de oração, tive uma visão de anjos que desciam do céu e me entregavam uma mensagem de Deus para expandir o evangelho."</p>
+                </div>
+
+                <div class="supernatural-card">
+                    <h3>⚡ Cura do Cego</h3>
+                    <p>"Na década de 70, um homem cego de nascença recebeu a visão durante um culto no templo da Vila Anastácio, fato que se espalhou por toda a cidade."</p>
+                </div>
+
+                <div class="supernatural-card">
+                    <h3>💧 Profecia das Nações</h3>
+                    <p>"Em 1965, profetizei que a palavra chegaria a mais de 100 países. Hoje, a IPDA está presente em mais de 150 nações."</p>
+                </div>
+
+                <div class="supernatural-card">
+                    <h3>🕊️ O Selo de Deus</h3>
+                    <p>"Durante um jejum de 40 dias, recebi a confirmação divina de que a IPDA seria um instrumento de salvação para multidões."</p>
+                </div>
+
+                <div class="supernatural-card">
+                    <h3>👼 Aparição Angelical</h3>
+                    <p>"No início da obra, um anjo apareceu durante a madrugada e fortaleceu minha fé para continuar enfrentando as perseguições."</p>
+                </div>
+
+                <div class="supernatural-card">
+                    <h3>🌊 Multiplicação</h3>
+                    <p>"Em momentos de necessidade, alimentos foram multiplicados durante cultos, alimentando centenas de necessitados."</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="legado" class="section">
+            <h2 class="section-title">Legado e Expansão</h2>
+            <div class="grid-2">
+                <div>
+                    <div class="photo-placeholder">
+                        <span>📸 Templo Sede em São Paulo</span>
+                    </div>
+                    <p class="photo-caption">Templo Sede atual - Um dos maiores templos da América Latina</p>
+                </div>
+                <div>
+                    <h3 style="color: #764ba2;">Números do Legado</h3>
+                    <ul style="list-style: none; margin-top: 20px;">
+                        <li style="margin-bottom: 10px;">✓ Presente em mais de 150 países</li>
+                        <li style="margin-bottom: 10px;">✓ Milhares de templos espalhados pelo mundo</li>
+                        <li style="margin-bottom: 10px;">✓ Programa de rádio em diversas línguas</li>
+                        <li style="margin-bottom: 10px;">✓ Editora e gráfica própria</li>
+                        <li style="margin-bottom: 10px;">✓ Obra social em diversas comunidades</li>
+                        <li style="margin-bottom: 10px;">✓ Formação de milhares de obreiros e missionários</li>
+                    </ul>
+                    <p style="margin-top: 20px;">O Missionário David Miranda deixou não apenas uma igreja, mas um movimento que continua impactando vidas através da mensagem de fé, amor e poder de Deus.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="text-align: center;">
+            <h2 class="section-title">Uma Frase para Reflexão</h2>
+            <div class="quote" style="font-size: 1.5em; border: none; text-align: center;">
+                "O que Deus fez comigo, pode fazer com qualquer um que se entregar completamente a Ele"
+                <p style="margin-top: 10px; font-size: 0.8em;">- Missionário David Miranda</p>
+            </div>
+            <a href="#" class="btn" style="margin-top: 20px;">Conheça Mais Sobre a IPDA</a>
+        </section>
+    </div>
+
+    <footer>
+        <p style="margin-bottom: 20px;">© 2024 - Site dedicado à memória do Missionário David Miranda</p>
+        <p>Igreja Pentecostal Deus é Amor - Fundada em 3 de Maio de 1962</p>
+        <p style="margin-top: 20px; font-size: 0.9em;">"Ide por todo o mundo e pregai o evangelho a toda criatura" - Marcos 16:15</p>
+    </footer>
+</body>
+</html>
