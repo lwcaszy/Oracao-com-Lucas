@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucas Jaqueiro · Paz do Senhor</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at 10% 30%, #c7e0f0, #8fb9d9);
+            color: #0a1c2f;
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        /* LAYOUT COM MENU LATERAL */
+        .main-layout {
+            display: flex;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem;
+            gap: 1.5rem;
+            align-items: stretch;
+        }
+
+        /* MENU LATERAL ESQUERDO */
+        .side-menu {
+            width: 260px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border-radius: 2.5rem;
+            padding: 2rem 1rem;
+            box-shadow: 0 25px 40px -15px rgba(0, 40, 70, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+
+        .menu-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #013a63;
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid #8ebcdd;
+        }
+
+        .menu-items {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            border-radius: 60px;
+            color: #022f55;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .menu-item i {
+            font-size: 1.6rem;
+            width: 32px;
+            text-align: center;
+        }
+
+        .menu-item:hover {
+            background: rgba(255, 255, 255, 0.9);
+            border-color: #7fa9c7;
+            transform: translateX(5px);
+            box-shadow: 0 8px 16px rgba(0,51,102,0.2);
+        }
+
+        .menu-item.instagram i { color: #d62976; }
+        .menu-item.facebook i { color: #1877f2; }
+        .menu-item.youtube i { color: #c00; }
+        .menu-item.prayer i { color: #136b9f; }
+
+        /* CONTEÚDO PRINCIPAL (ocupa o resto) */
+        .content-area {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .container {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(14px);
+            border-radius: 3rem;
+            box-shadow: 0 35px 60px -15px rgba(0, 40, 70, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+            padding: 3rem 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            transition: all 0.4s ease;
+        }
+
+        .profile-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #ffffffcc;
+            box-shadow: 0 15px 30px rgba(0, 51, 102, 0.4);
+            margin-bottom: 1.5rem;
+            transition: transform 0.5s ease;
+        }
+        .profile-pic:hover {
+            transform: scale(1.05);
+        }
+
+        h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            background: linear-gradient(145deg, #013a63, #1f6e9f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.4rem;
+        }
+
+        .welcome-message {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(6px);
+            padding: 1.8rem 2.2rem;
+            border-radius: 3rem;
+            margin: 1.2rem 0;
+            border: 1px solid #b3d4f0;
+            box-shadow: 0 15px 25px -12px #15435e;
+            font-size: 1.3rem;
+            line-height: 1.6;
+            color: #043256;
+            text-align: center;
+            max-width: 900px;
+        }
+
+        /* SEÇÃO DE ORAÇÕES */
+        .prayer-section {
+            background: linear-gradient(135deg, #ebf6ff, #d6e9fa);
+            border-radius: 2.5rem;
+            padding: 2.5rem;
+            margin: 2.8rem 0;
+            border: 1px solid #b6d6f0;
+            box-shadow: 0 20px 30px -10px #2b5e89, 0 0 0 1px #ffffffda inset;
+        }
+
+        .prayer-section h2 {
+            font-size: 2.2rem;
+            font-weight: 650;
+            color: #013357;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .prayer-text {
+            font-size: 1.4rem;
+            color: #103e5c;
+            margin-bottom: 2rem;
+            font-style: italic;
+            padding-left: 1.5rem;
+            border-left: 6px solid #4083b3;
+        }
+
+        .prayer-input-area {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            margin: 2rem 0 1.2rem;
+        }
+
+        .prayer-input-area input {
+            flex: 3 1 280px;
+            padding: 1.2rem 2rem;
+            border: none;
+            border-radius: 60px;
+            background: white;
+            font-size: 1.2rem;
+            box-shadow: 0 10px 20px rgba(0, 39, 78, 0.1);
+            border: 1px solid #b0d2f0;
+        }
+
+        .prayer-input-area button {
+            flex: 0 1 auto;
+            background: #136b9f;
+            border: none;
+            color: white;
+            font-weight: 700;
+            padding: 1.2rem 3rem;
+            border-radius: 60px;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.9rem;
+            border: 1px solid #0b4d76;
+            box-shadow: 0 14px 22px -8px #0b3d60;
+        }
+
+        .prayer-input-area button:hover {
+            background: #0f7cbb;
+            transform: scale(1.04);
+        }
+
+        .small-note {
+            color: #1d4d75;
+            font-size: 1rem;
+            margin-top: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        /* REDES SOCIAIS (cards) */
+        .social-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #013152;
+            margin: 2.5rem 0 1.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border-bottom: 3px solid #8ebcdd;
+            padding-bottom: 0.5rem;
+            width: fit-content;
+        }
+
+        .social-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .social-card {
+            background: white;
+            border-radius: 2.2rem;
+            padding: 1.3rem 2.2rem;
+            min-width: 240px;
+            flex: 1 1 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.2rem;
+            text-decoration: none;
+            color: #022f55;
+            font-weight: 600;
+            font-size: 1.5rem;
+            border: 1px solid #bad2ef;
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 25px -12px #1e4d77;
+        }
+
+        .social-card i {
+            font-size: 2.6rem;
+        }
+
+        .social-card.instagram i {
+            color: transparent;
+            background: radial-gradient(circle at 30% 110%, #ffd600, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+        .social-card.facebook i { color: #1877f2; }
+        .social-card.youtube i { color: #c00; }
+
+        .social-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 34px -10px #013858;
+        }
+
+        .church-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            background: #c7e3fd;
+            border-radius: 80px;
+            padding: 0.9rem 2.2rem;
+            width: fit-content;
+            margin: 2rem auto 0 auto;
+            font-size: 1.1rem;
+            border: 1px solid #96c2ea;
+            color: #022b49;
+            box-shadow: 0 15px 20px -12px #103959;
+        }
+
+        .contact-footer {
+            margin-top: 3rem;
+            text-align: center;
+            border-top: 2px solid #aac9e7;
+            padding-top: 2.2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .contact-footer a {
+            color: #013e6b;
+            font-weight: 700;
+            text-decoration: none;
+            border-bottom: 3px dotted #4882b3;
+        }
+
+        .arzola {
+            font-size: 1rem;
+            color: #1f5582;
+            margin-top: 1rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* BOTÃO ADMIN */
+        .admin-login-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #1e4e72;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+        .admin-login-btn:hover {
+            background: #0f3b5a;
+            transform: scale(1.05);
+        }
+
+        /* MODAIS */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: white;
+            border-radius: 2rem;
+            padding: 2.5rem;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 30px 50px rgba(0,0,0,0.5);
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #c7e3fd;
+            padding-bottom: 1rem;
+        }
+        .modal-header h3 {
+            font-size: 1.8rem;
+            color: #013a63;
+        }
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #666;
+        }
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .login-form input {
+            padding: 1rem 1.5rem;
+            border-radius: 60px;
+            border: 1px solid #b0d2f0;
+            font-size: 1.1rem;
+        }
+        .login-form button {
+            background: #136b9f;
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .error-msg {
+            color: #c00;
+            text-align: center;
+        }
+
+        /* PAINEL ADMIN */
+        .admin-panel {
+            display: block;
+        }
+        .prayer-list {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        .prayer-list li {
+            background: #ebf6ff;
+            padding: 1rem 1.5rem;
+            border-radius: 60px;
+            margin-bottom: 1rem;
+            border: 1px solid #9ebcd6;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .prayer-list small {
+            color: #1d4d75;
+            font-size: 0.8rem;
+        }
+        .delete-prayer {
+            background: #c00;
+            color: white;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .logout-btn {
+            background: #8b9fb1;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 60px;
+            margin-top: 1rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 900px) {
+            .main-layout { flex-direction: column; }
+            .side-menu { width: 100%; position: static; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Botão Admin (fixo) -->
+    <button class="admin-login-btn" onclick="openLoginModal()">
+        <i class="fas fa-lock"></i> Área Restrita
+    </button>
+
+    <!-- Modal de Login -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-shield-alt"></i> Acesso Administrativo</h3>
+                <button class="close-modal" onclick="closeLoginModal()">&times;</button>
+            </div>
+            <div class="login-form">
+                <input type="password" id="adminPassword" placeholder="Digite a senha" onkeypress="if(event.key==='Enter') checkPassword()">
+                <button onclick="checkPassword()">Entrar</button>
+                <div id="loginError" class="error-msg"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal do Painel Admin (Pedidos) -->
+    <div class="modal-overlay" id="adminModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-pray"></i> Pedidos de Oração Recebidos</h3>
+                <button class="close-modal" onclick="closeAdminModal()">&times;</button>
+            </div>
+            <div id="adminPanel" class="admin-panel">
+                <ul class="prayer-list" id="prayerList"></ul>
+                <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Sair</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- LAYOUT PRINCIPAL COM MENU LATERAL -->
+    <div class="main-layout">
+        <!-- MENU LATERAL ESQUERDO -->
+        <aside class="side-menu">
+            <div class="menu-title">
+                <i class="fas fa-bars"></i> Menu
+            </div>
+            <div class="menu-items">
+                <a href="#" class="menu-item prayer" onclick="document.getElementById('prayerInput').scrollIntoView({behavior:'smooth'}); return false;">
+                    <i class="fas fa-hands-praying"></i> Pedido de Oração
+                </a>
+                <a href="https://www.instagram.com/lucasipdaoficial/" target="_blank" class="menu-item instagram">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+                <a href="https://facebook.com/lucasjaqueiro" target="_blank" class="menu-item facebook">
+                    <i class="fab fa-facebook"></i> Facebook
+                </a>
+                <a href="https://www.youtube.com/@lucasjaqueiroipda" target="_blank" class="menu-item youtube">
+                    <i class="fab fa-youtube"></i> YouTube
+                </a>
+            </div>
+        </aside>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <div class="content-area">
+            <div class="container">
+                <div class="card">
+                    <div class="profile-header">
+                        <img src='imagemlucas.jpg' class="profile-pic"
+                             onerror="this.onerror=null; this.src='https://via.placeholder.com/150x150?text=IPDA';">
+                        <h1>Lucas Jaqueiro</h1>
+                        
+                        <div class="welcome-message">
+                            🗣️ Paz do Senhor Jesus, ouvintes! Seu amigo e servo em Cristo, Lucas Jaqueiro! 
+                            Este Site tem o intuito de você deixar seu pedido de oração, onde estarei orando a seu favor! 
+                            Que Deus possa abençoar a cada um! 🙌
+                        </div>
+                    </div>
+
+                    <p style="font-size:1.2rem; text-align:center; color:#1f4e75;">
+                        Compartilhando a palavra, reflexões e orações.
+                    </p>
+
+                    <!-- SEÇÃO DE ORAÇÕES -->
+                    <div class="prayer-section">
+                        <h2><i class="fas fa-hands-praying"></i> Clamor & intercessão</h2>
+                        <div class="prayer-text">
+                            “Deixe seu pedido de oração. O Senhor ouve o clamor do seu povo.”
+                        </div>
+                        <div class="prayer-input-area">
+                            <input type="text" id="prayerInput" placeholder="Escreva seu pedido de oração..." aria-label="Pedido de oração">
+                            <button onclick="sendPrayer()" aria-label="Enviar pedido de oração">
+                                <i class="fas fa-pray"></i> Entregar
+                            </button>
+                        </div>
+                        <div id="prayerFeedback" class="small-note" style="color: #008800;"></div>
+                        <div class="small-note">
+                            <i class="fas fa-shield-alt"></i> Todas as orações são acolhidas com fé
+                        </div>
+                    </div>
+
+                    <!-- REDES SOCIAIS (cards) -->
+                    <div class="social-title"><i class="fas fa-hashtag"></i> Acompanhe pelas redes</div>
+                    <div class="social-grid">
+                        <a href="https://www.instagram.com/lucasipdaoficial/" target="_blank" class="social-card instagram">
+                            <i class="fab fa-instagram"></i> <span>@lucasipdaoficial</span>
+                        </a>
+                        <a href="https://facebook.com/lucasjaqueiro" target="_blank" class="social-card facebook">
+                            <i class="fab fa-facebook"></i> <span>/lucasjaqueiro</span>
+                        </a>
+                        <a href="https://www.youtube.com/@lucasjaqueiroipda" target="_blank" class="social-card youtube">
+                            <i class="fab fa-youtube"></i> <span>@lucasjaqueiroipda</span>
+                        </a>
+                    </div>
+
+                    <div class="church-badge">
+                        <i class="fas fa-church"></i> Igreja Pentecostal Deus É Amor · IPDA 
+                    </div>
+
+                    <div class="contact-footer">
+                        <p><i class="far fa-envelope"></i> <a href="mailto:lucasgabrielmendes015@gmail.com">lucasgabrielmendes015@gmail.com</a></p>
+                        <div class="arzola">
+                            <i class="fas fa-bible"></i> “Orai sem Cessar” — 1 Tessalonicenses 5:17
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==================== SISTEMA DE ARMAZENAMENTO ====================
+        const STORAGE_KEY = 'prayer_requests';
+        // 🔑 SENHA (altere aqui se desejar)
+        const ADMIN_PASSWORD = 'lucasipda3001200930012009';
+
+        // Carrega pedidos do localStorage
+        function loadPrayers() {
+            const stored = localStorage.getItem(STORAGE_KEY);
+            return stored ? JSON.parse(stored) : [];
+        }
+
+        // Salva pedidos no localStorage
+        function savePrayers(prayers) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(prayers));
+        }
+
+        // Adiciona novo pedido
+        function addPrayer(text) {
+            const prayers = loadPrayers();
+            const newPrayer = {
+                id: Date.now(),
+                text: text,
+                timestamp: new Date().toLocaleString('pt-BR')
+            };
+            prayers.push(newPrayer);
+            savePrayers(prayers);
+            return newPrayer;
+        }
+
+        // Remove pedido
+        function deletePrayer(id) {
+            let prayers = loadPrayers();
+            prayers = prayers.filter(p => p.id !== id);
+            savePrayers(prayers);
+            renderPrayerList(); // atualiza a lista no modal
+        }
+
+        // ==================== FUNÇÕES DA INTERFACE ====================
+        
+        // Enviar pedido de oração (agora salva corretamente)
+        function sendPrayer() {
+            const input = document.getElementById('prayerInput');
+            const text = input.value.trim();
+            const feedback = document.getElementById('prayerFeedback');
+            
+            if (text === '') {
+                feedback.style.color = '#c00';
+                feedback.innerHTML = '✝️ Por favor, escreva seu pedido de oração.';
+                return;
+            }
+
+            // Adiciona à lista e salva no localStorage
+            addPrayer(text);
+            
+            // Limpa campo e mostra feedback
+            input.value = '';
+            feedback.style.color = '#008800';
+            feedback.innerHTML = '✅ Pedido enviado! Será lembrado em minhas orações.';
+            
+            setTimeout(() => {
+                feedback.innerHTML = '';
+            }, 4000);
+        }
+
+        // Renderizar lista de pedidos no admin
+        function renderPrayerList() {
+            const prayers = loadPrayers(); // sempre carrega do storage
+            const listElement = document.getElementById('prayerList');
+            
+            if (!listElement) return;
+
+            if (prayers.length === 0) {
+                listElement.innerHTML = '<li style="justify-content:center; background:transparent; border:none;">Nenhum pedido ainda 🙏</li>';
+                return;
+            }
+
+            // Mostra os pedidos mais recentes primeiro (reverse)
+            listElement.innerHTML = prayers.reverse().map(p => `
+                <li>
+                    <div style="flex:1">
+                        <strong>${p.text}</strong><br>
+                        <small>${p.timestamp}</small>
+                    </div>
+                    <button class="delete-prayer" onclick="deletePrayer(${p.id})" title="Remover pedido">×</button>
+                </li>
+            `).join('');
+        }
+
+        // ==================== CONTROLE DE MODAIS E LOGIN ====================
+        
+        function openLoginModal() {
+            document.getElementById('loginModal').style.display = 'flex';
+            document.getElementById('adminPassword').value = '';
+            document.getElementById('loginError').innerHTML = '';
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').style.display = 'none';
+        }
+
+        function openAdminModal() {
+            renderPrayerList(); // atualiza antes de mostrar
+            document.getElementById('adminModal').style.display = 'flex';
+        }
+
+        function closeAdminModal() {
+            document.getElementById('adminModal').style.display = 'none';
+        }
+
+        function checkPassword() {
+            const password = document.getElementById('adminPassword').value;
+            if (password === ADMIN_PASSWORD) {
+                closeLoginModal();
+                openAdminModal();
+            } else {
+                document.getElementById('loginError').innerHTML = '❌ Senha incorreta!';
+            }
+        }
+
+        function logout() {
+            closeAdminModal();
+        }
+
+        // Fechar modais clicando fora
+        window.onclick = function(event) {
+            const loginModal = document.getElementById('loginModal');
+            const adminModal = document.getElementById('adminModal');
+            if (event.target === loginModal) closeLoginModal();
+            if (event.target === adminModal) closeAdminModal();
+        }
+
+        // Tecla ESC fecha modais
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLoginModal();
+                closeAdminModal();
+            }
+        });
+
+        // Para garantir que os pedidos antigos não se percam, 
+        // inicializa se necessário
+        if (!localStorage.getItem(STORAGE_KEY)) {
+            savePrayers([]);
+        }
+    </script>
+</body>
+</html>
